@@ -119,6 +119,8 @@ After making the changes to the `build.gradle` file, commit them:
 
 Building the Android app binary is simple - just run `expo eas:build --platform android` and you'll be guided through generating or providing your own keystore. For the sake of simplicity in this tutorial, select `Generate new keystore` and hit `ENTER`.
 
+**Warning: If you've previously set up credentials for an app with the same slug, Expo CLI will try to reuse them.**
+
 <center><img src="/static/images/eas-builds/5-minute-tutorial/06-generate-keystore.png" /></center>
 
 The build should start soon after that. Expo CLI will print a URL to the page where you can monitor the build (and view logs). Open the URL in a browser and you should see a page like this:
@@ -156,7 +158,9 @@ You'll be asked which bundle identifier to use. Choose the one defined in `app.j
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/12-choose-bundle-id.png" /></center>
 
-Follow the next steps (generating credentials and auto-configuring your Xcode project) and you'll be provided with the URL to the build logs page:
+Follow the next steps (generating credentials and auto-configuring your Xcode project) and you'll be provided with the URL to the build logs page.
+
+**Warning: If you've previously set up credentials for an app with the same slug, Expo CLI will try to reuse them.**
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/13-ios-build-in-progress.png" /></center>
 
