@@ -6,7 +6,7 @@ Let's get started by building Android and iOS app binaries for a fresh bare proj
 
 ## Prerequisites
 
-- Make sure you're using the latest version of Expo CLI. We're constantly improving the experience with EAS Builds, and since it's still in alpha, a slightly older version than the latest can become useless. **This tutorial assumes you're using `expo-cli@3.23.2` or newer.**
+- Install Expo CLI by running `npm install -g expo-cli` (or `yarn global add expo-cli`). If you already have it, make sure you're using the latest version. We're constantly improving the experience with EAS Builds, and since it's still in alpha, a slightly older version than the latest can become useless. **This tutorial assumes you're using `expo-cli@3.23.2` or newer.**
 - Sign in with `expo login` or sign up with `expo register` if you don't have an Expo account yet. You can check if you're logged in by running `expo whoami`.
 
 ## Initialize a New Project

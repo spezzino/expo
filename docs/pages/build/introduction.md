@@ -2,7 +2,7 @@
 title: Introduction
 ---
 
-**EAS Builds** is a service for building app binaries for distribution on the Apple App Store and Google Play Store. You can take advantage of it for both managed and bare Expo projects. This service is going to replace the existing build service entirely.
+**EAS Builds** is a service for building app binaries for your React Native project. You can take advantage of it for both managed and bare Expo projects. This service is going to replace the existing build service entirely.
 
 ## Managed Expo Projects Are Not Supported Yet
 
