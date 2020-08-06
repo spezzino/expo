@@ -7,6 +7,7 @@ import android.graphics.SurfaceTexture;
 import android.util.Pair;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.View;
 
 import com.yqritc.scalablevideoview.ScalableType;
 import com.yqritc.scalablevideoview.ScaleManager;
@@ -16,10 +17,9 @@ import com.yqritc.scalablevideoview.Size;
 public class VideoTextureView extends TextureView implements TextureView.SurfaceTextureListener {
 
   private VideoView mVideoView = null;
-
   private boolean mIsAttachedToWindow = false;
-
   private Surface mSurface = null;
+  private boolean mVisible = true;
 
   public VideoTextureView(final Context themedReactContext, VideoView videoView) {
     super(themedReactContext, null, 0);
@@ -50,6 +50,19 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
     final Matrix matrix = new ScaleManager(viewSize, videoSize).getScaleMatrix(resizeMode);
     if (matrix != null) {
       setTransform(matrix);
+    }
+  }
+
+  public void onResume() {
+
+    // TextureView contains a bug which sometimes causes the view to
+    // not be rendered after resuming the app (e.g. by unlocking the screen).
+    // The bug occurs when the hardware layer is destroyed, but onVisibilityChanged
+    // has not been called. For this particular case we forcefully invalidate the
+    // view and its layer so it is always drawn correctly after resuming.
+    if (mVisible) {
+      onVisibilityChanged(this, View.INVISIBLE);
+      onVisibilityChanged(this, View.VISIBLE);
     }
   }
 
@@ -91,5 +104,10 @@ public class VideoTextureView extends TextureView implements TextureView.Surface
     super.onAttachedToWindow();
     mIsAttachedToWindow = true;
     mVideoView.tryUpdateVideoSurface(mSurface);
+  }
+
+  protected void onVisibilityChanged(View changedView, int visibility) {
+    super.onVisibilityChanged(changedView, visibility);
+    mVisible = visibility == View.VISIBLE;
   }
 }
