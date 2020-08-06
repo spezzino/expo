@@ -48,7 +48,7 @@ The next step towards building your native project with EAS Builds is creating t
 }
 ```
 
-This declares that you want to build for Android and iOS. Each platform defines a single build profile named `release` (you can have multiple build profiles like `release`, `debug`, `testing`, etc.). Each profile declares that the project is a generic React Native project (unlike a managed Expo project which doesn't contain native code in the project tree).
+This is a minimal example configuration for Android and iOS builds. It defines a single build profile named `release` (you can have multiple build profiles like `release`, `debug`, `testing`, etc.) for each platform. Each profile declares that the project is a generic React Native project (unlike a managed Expo project which doesn't contain native code in the project tree).
 
 After creating the file, make another commit:
 
@@ -61,16 +61,16 @@ If you want to learn more about `eas.json` see the [Configuring with eas.json](h
 
 Once you've created `eas.json`, new Expo CLI commands should become available for you:
 
-- `expo eas:build` - manages the whole build process, which consists of: credentials management, project autoconfiguration, running build and waiting for it to finish
-- `expo eas:build:status` - displays the status of the lastest builds for the project
+- `expo eas:build` - manages the whole build process, which consists of: credentials management, project auto-configuration, running the build, and waiting for it to finish
+- `expo eas:build:status` - displays the status of your latest build for this project
 
 ## Building For Android
 
-### Configuring Android Project
+### Configuring the Android Project
 
 > We're working on streamlining this process. It'll look differently in the future. Stay tuned.
 
-So far, we've configured EAS Builds with `eas.json`. Now is the time to make the Android code buildable on our servers. Basically, the only thing you need to do is to provide your app's credentials to EAS Builds. As far as Android applications, you'll need a keystore, keystore password, key alias and key password to build the app binary.
+So far, we've configured EAS Builds with `eas.json`. Now is the time to make the Android code buildable on our servers. All you need to do is provide your app's credentials to EAS Builds. For an Android application, a keystore, keystore password, key alias, and key password are needed to build the app binary.
 
 Expo CLI will help you generate the keystore. However, we need to tell `gradle` where it should look for the credentials.
 Open `android/app/build.gradle` and make the following changes:
@@ -117,7 +117,7 @@ After making the changes to the `build.gradle` file, commit them:
 
 ### Running the Build
 
-Building the Android app binary is really straightforward. Just run `expo eas:build --platform android` and you'll be guided through generating or providing your own keystore. For the sake of simplicity of this tutorial, select `Generate new keystore` and hit `ENTER`.
+Building the Android app binary is simple - just run `expo eas:build --platform android` and you'll be guided through generating or providing your own keystore. For the sake of simplicity in this tutorial, select `Generate new keystore` and hit `ENTER`.
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/06-generate-keystore.png" /></center>
 
@@ -126,7 +126,7 @@ The build should start soon after that. Expo CLI will print a URL to the page wh
 <center><img src="/static/images/eas-builds/5-minute-tutorial/07-build-progress.png" /></center>
 <center><img src="/static/images/eas-builds/5-minute-tutorial/08-build-logs.png" /></center>
 
-Once the build completes you can download the app binary either by visiting the build status page (and clicking the download button) or by following the URL printed by Expo CLI:
+Once the build completes you can download the app binary by either visiting the build status page (and clicking the download button), or by opening the URL printed by Expo CLI:
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/09-build-completed-website.png" /></center>
 <center><img src="/static/images/eas-builds/5-minute-tutorial/10-build-completed-cli.png" /></center>
@@ -156,10 +156,10 @@ You'll be asked which bundle identifier to use. Choose the one defined in `app.j
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/12-choose-bundle-id.png" /></center>
 
-Follow next steps (generating credentials and configuring the Xcode project) and you'll be provided with the URL to the build logs page:
+Follow the next steps (generating credentials and auto-configuring your Xcode project) and you'll be provided with the URL to the build logs page:
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/13-ios-build-in-progress.png" /></center>
 
-Once the build completes you can download the app binary the same way of the Android counterpart - either by visiting the website or following the URL from console.
+Once the build completes you can download the app binary the same way you did with the Android counterpart - either via the build status page or opening the URL that's printed to your console.
 
 <center><img src="/static/images/eas-builds/5-minute-tutorial/14-ios-build-completed.png" /></center>
